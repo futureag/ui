@@ -1,7 +1,7 @@
 {
-  "name": "My App",
-  "short_name": "My App",
-  "description": "My App description",
+  "name": "Openag UI",
+  "short_name": "Openag UI",
+  "description": "UI to integrate with food computers",
   "start_url": "/",
   "display": "standalone",
   "theme_color": "#3f51b5",

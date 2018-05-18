@@ -1,11 +1,11 @@
 {
-  "name": "pwa-starter-kit",
+  "name": "openag-ui",
   "version": "0.8.0",
   "contributors": [
-    "The Polymer Authors"
+    "Chris Zempel"
   ],
   "license": "BSD-3-Clause",
-  "repository": "Polymer/pwa-starter-kit",
+  "repository": "futureag/openag-ui",
   "scripts": {
     "start": "polymer serve",
     "build": "npm run build:prpl-server && npm run build:static",
