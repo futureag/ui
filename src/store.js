@@ -8,11 +8,16 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 
-import { createStore, compose as origCompose, applyMiddleware, combineReducers } from 'redux';
-import thunk from 'redux-thunk';
-import { lazyReducerEnhancer } from 'pwa-helpers/lazy-reducer-enhancer.js';
+import {
+  createStore,
+  compose as origCompose,
+  applyMiddleware,
+  combineReducers
+} from "redux";
+import thunk from "redux-thunk";
+import { lazyReducerEnhancer } from "pwa-helpers/lazy-reducer-enhancer.js";
 
-import app from './reducers/app.js';
+import app from "./reducers/app.js";
 
 // Sets up a Chrome extension for time travel debugging.
 // See https://github.com/zalmoxisus/redux-devtools-extension for more information.
