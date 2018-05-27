@@ -56,7 +56,6 @@ class MarsfarmView1 extends connect(store)(PageViewElement) {
 
       Plotly.newPlot(this.shadowRoot.querySelector("#temperatureChart"), data, {
         yaxis: {
-          range: [25.0, 35.0],
           type: "linear",
           label: "Degrees Celsius"
         }
