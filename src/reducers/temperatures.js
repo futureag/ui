@@ -20,6 +20,7 @@ const temperatures = (
       };
     case TEMPERATURES_REQUEST_FAILED:
       return {
+        ...state,
         temperaturesRequest: "failed"
       };
     default:
