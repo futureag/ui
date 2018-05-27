@@ -1,22 +1,6 @@
-<<<<<<< HEAD
 import { LitElement, html } from "@polymer/lit-element";
 import { plusIcon, minusIcon } from "./marsfarm-icons.js";
 import { ButtonSharedStyles } from "./button-shared-styles.js";
-=======
-/**
-@license
-Copyright (c) 2018 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
-*/
-
-import { LitElement, html } from '@polymer/lit-element';
-import { plusIcon, minusIcon } from './my-icons.js';
-import { ButtonSharedStyles } from './button-shared-styles.js';
->>>>>>> Truncate history.
 
 // This is a reusable element. It is not connected to the store. You can
 // imagine that it could just as well be a third-party element that you
@@ -32,21 +16,15 @@ class CounterElement extends LitElement {
         <p>
           Clicked: <span>${props.clicks}</span> times.
           Value is <span>${props.value}</span>.
-<<<<<<< HEAD
           <button on-click="${() =>
             this._onIncrement()}" title="Add 1">${plusIcon}</button>
           <button on-click="${() =>
             this._onDecrement()}" title="Minus 1">${minusIcon}</button>
-=======
-          <button on-click="${() => this._onIncrement()}" title="Add 1">${plusIcon}</button>
-          <button on-click="${() => this._onDecrement()}" title="Minus 1">${minusIcon}</button>
->>>>>>> Truncate history.
         </p>
       </div>
     `;
   }
 
-<<<<<<< HEAD
   static get properties() {
     return {
       /* The total number of clicks you've done. */
@@ -55,14 +33,6 @@ class CounterElement extends LitElement {
       value: Number
     };
   }
-=======
-  static get properties() { return {
-    /* The total number of clicks you've done. */
-    clicks: Number,
-    /* The current value of the counter. */
-    value: Number
-  }};
->>>>>>> Truncate history.
 
   constructor() {
     super();
@@ -73,26 +43,14 @@ class CounterElement extends LitElement {
   _onIncrement() {
     this.value++;
     this.clicks++;
-<<<<<<< HEAD
     this.dispatchEvent(new CustomEvent("counter-incremented"));
-=======
-    this.dispatchEvent(new CustomEvent('counter-incremented'));
->>>>>>> Truncate history.
   }
 
   _onDecrement() {
     this.value--;
     this.clicks++;
-<<<<<<< HEAD
     this.dispatchEvent(new CustomEvent("counter-decremented"));
   }
 }
 
 window.customElements.define("counter-element", CounterElement);
-=======
-    this.dispatchEvent(new CustomEvent('counter-decremented'));
-  }
-}
-
-window.customElements.define('counter-element', CounterElement);
->>>>>>> Truncate history.
