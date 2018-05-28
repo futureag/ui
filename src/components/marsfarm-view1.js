@@ -6,9 +6,9 @@ import { connect } from "pwa-helpers/connect-mixin.js";
 
 import { store } from "../store.js";
 import { fetchTemperatures } from "../actions/temperatures.js";
-import { fetchCouchdbAuthentication } from "../actions/couchdb.js";
+import { fetchCouchdbAuthentication } from "../redux/couchdb/operations.js";
 
-import couchdb from "../reducers/couchdb.js";
+import couchdb from "../redux/couchdb";
 import temperatures from "../reducers/temperatures.js";
 store.addReducers({
   couchdb,
