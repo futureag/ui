@@ -5,28 +5,28 @@ export const COUCHDB_AUTHENTICATION_SUCCEEDED =
 export const COUCHDB_AUTHENTICATION_FAILED = "COUCHDB_AUTHENTICATION_FAILED";
 
 let loaded = false;
+export function fetchCouchdbAuthentication() {
+  return async dispatch => {
+    if (loaded) return;
+    loaded = true;
+    dispatch(couchdbAuthenticationRequested());
+    const response = await couchdbAuth();
+    response.ok
+      ? dispatch(couchdbAuthenticationSucceeded())
+      : dispatch(couchdbAuthenticationFailed());
+  };
+}
 
-export const fetchCouchdbAuthentication = () => dispatch => {
-  if (loaded) return;
-  loaded = true;
-  dispatch(couchdbAuthenticationRequested());
-  fetch("http://OpenagBloom.ddns.net:5985/_session", {
-    method: "POST",
+export function couchdbAuth() {
+  return fetch(`http://OpenagBloom.ddns.net:5985/_session`, {
+    headers: new Headers({
+      "Content-Type": "application/json"
+    }),
     credentials: "include",
-    headers: {
-      "content-type": "application/json"
-    },
+    method: "POST",
     body: JSON.stringify({ name: "webbhm", password: "admin" })
-  })
-    .then(response => {
-      response.ok
-        ? dispatch(couchdbAuthenticationSucceeded())
-        : dispatch(couchdbAuthenticationFailed());
-    })
-    .catch(error => {
-      dispatch(couchdbAuthenticationFailed());
-    });
-};
+  });
+}
 
 export const couchdbAuthenticationRequested = () => {
   return {
