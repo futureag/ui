@@ -1,6 +1,6 @@
 {
   "entrypoint": "index.html",
-  "shell": "src/components/marsfarm-app.js",
+  "shell": "src/marsfarm-app.js",
   "sources": [
     "images/**/*"
   ],
