@@ -16,12 +16,7 @@ import { installMediaQueryWatcher } from "pwa-helpers/media-query.js";
 import { updateMetadata } from "pwa-helpers/metadata.js";
 
 import { store } from "../store.js";
-import {
-  navigate,
-  updateOffline,
-  updateDrawerState,
-  updateLayout
-} from "../actions/app.js";
+import { appOperations } from "../redux/app";
 
 class MarsfarmApp extends connect(store)(LitElement) {
   _render({ appTitle, _page, _drawerOpened, _snackbarOpened, _offline }) {
@@ -167,7 +162,9 @@ class MarsfarmApp extends connect(store)(LitElement) {
     <app-header condenses reveals effects="waterfall">
       <app-toolbar class="toolbar-top">
         <button class="menu-btn" title="Menu" on-click="${_ =>
-          store.dispatch(updateDrawerState(true))}">${menuIcon}</button>
+          store.dispatch(
+            appOperations.updateDrawerState(true)
+          )}">${menuIcon}</button>
         <div main-title>${appTitle}</div>
       </app-toolbar>
 
@@ -181,7 +178,7 @@ class MarsfarmApp extends connect(store)(LitElement) {
     <!-- Drawer content -->
     <app-drawer opened="${_drawerOpened}"
         on-opened-changed="${e =>
-          store.dispatch(updateDrawerState(e.target.opened))}">
+          store.dispatch(appOperations.updateDrawerState(e.target.opened))}">
       <nav class="drawer-list">
         <a selected?="${_page === "view1"}" href="/view1">Temperature</a>
         <a selected?="${_page === "view2"}" href="/view2">Counter</a>
@@ -236,11 +233,15 @@ class MarsfarmApp extends connect(store)(LitElement) {
 
   _firstRendered() {
     installRouter(location =>
-      store.dispatch(navigate(window.decodeURIComponent(location.pathname)))
+      store.dispatch(
+        appOperations.navigate(window.decodeURIComponent(location.pathname))
+      )
     );
-    installOfflineWatcher(offline => store.dispatch(updateOffline(offline)));
+    installOfflineWatcher(offline =>
+      store.dispatch(appOperations.updateOffline(offline))
+    );
     installMediaQueryWatcher(`(min-width: 460px)`, matches =>
-      store.dispatch(updateLayout(matches))
+      store.dispatch(appOperations.updateLayout(matches))
     );
   }
 

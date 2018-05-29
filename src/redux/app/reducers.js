@@ -1,34 +1,28 @@
-import {
-  UPDATE_PAGE,
-  UPDATE_OFFLINE,
-  OPEN_SNACKBAR,
-  CLOSE_SNACKBAR,
-  UPDATE_DRAWER_STATE
-} from "../actions/app.js";
+import * as types from "./types.js";
 
-const app = (state = { drawerOpened: false }, action) => {
+const reducer = (state = { drawerOpened: false }, action) => {
   switch (action.type) {
-    case UPDATE_PAGE:
+    case types.UPDATE_PAGE:
       return {
         ...state,
         page: action.page
       };
-    case UPDATE_OFFLINE:
+    case types.UPDATE_OFFLINE:
       return {
         ...state,
         offline: action.offline
       };
-    case UPDATE_DRAWER_STATE:
+    case types.UPDATE_DRAWER_STATE:
       return {
         ...state,
         drawerOpened: action.opened
       };
-    case OPEN_SNACKBAR:
+    case types.OPEN_SNACKBAR:
       return {
         ...state,
         snackbarOpened: true
       };
-    case CLOSE_SNACKBAR:
+    case types.CLOSE_SNACKBAR:
       return {
         ...state,
         snackbarOpened: false
@@ -38,4 +32,4 @@ const app = (state = { drawerOpened: false }, action) => {
   }
 };
 
-export default app;
+export default reducer;
