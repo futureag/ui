@@ -6,8 +6,8 @@ import "@polymer/app-layout/app-scroll-effects/effects/waterfall.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
 
-import { menuIcon } from "./marsfarm-icons.js";
-import "./snack-bar.js";
+import { menuIcon } from "./elements/marsfarm-icons.js";
+import "./elements/snack-bar.js";
 
 import { connect } from "pwa-helpers/connect-mixin.js";
 import { installRouter } from "pwa-helpers/router.js";
@@ -15,13 +15,8 @@ import { installOfflineWatcher } from "pwa-helpers/network.js";
 import { installMediaQueryWatcher } from "pwa-helpers/media-query.js";
 import { updateMetadata } from "pwa-helpers/metadata.js";
 
-import { store } from "../store.js";
-import {
-  navigate,
-  updateOffline,
-  updateDrawerState,
-  updateLayout
-} from "../actions/app.js";
+import { store } from "./store.js";
+import { appOperations } from "./redux/app";
 
 class MarsfarmApp extends connect(store)(LitElement) {
   _render({ appTitle, _page, _drawerOpened, _snackbarOpened, _offline }) {
@@ -167,24 +162,24 @@ class MarsfarmApp extends connect(store)(LitElement) {
     <app-header condenses reveals effects="waterfall">
       <app-toolbar class="toolbar-top">
         <button class="menu-btn" title="Menu" on-click="${_ =>
-          store.dispatch(updateDrawerState(true))}">${menuIcon}</button>
+          store.dispatch(
+            appOperations.updateDrawerState(true)
+          )}">${menuIcon}</button>
         <div main-title>${appTitle}</div>
       </app-toolbar>
 
       <!-- This gets hidden on a small screen-->
       <nav class="toolbar-list">
         <a selected?="${_page === "view1"}" href="/view1">Temperature</a>
-        <a selected?="${_page === "view2"}" href="/view2">Counter</a>
       </nav>
     </app-header>
 
     <!-- Drawer content -->
     <app-drawer opened="${_drawerOpened}"
         on-opened-changed="${e =>
-          store.dispatch(updateDrawerState(e.target.opened))}">
+          store.dispatch(appOperations.updateDrawerState(e.target.opened))}">
       <nav class="drawer-list">
         <a selected?="${_page === "view1"}" href="/view1">Temperature</a>
-        <a selected?="${_page === "view2"}" href="/view2">Counter</a>
       </nav>
     </app-drawer>
 
@@ -194,14 +189,6 @@ class MarsfarmApp extends connect(store)(LitElement) {
         class="page"
         active?="${_page === "view1"}"
       ></marsfarm-view1>
-      <marsfarm-view2
-        class="page"
-        active?="${_page === "view2"}"
-      ></marsfarm-view2>
-      <my-view3
-        class="page"
-        active?="${_page === "view3"}"
-      ></my-view3>
       <marsfarm-view404
         class="page"
         active?="${_page === "view404"}"
@@ -209,7 +196,7 @@ class MarsfarmApp extends connect(store)(LitElement) {
     </main>
 
     <footer>
-      <p>Made with &lt;3 by the Polymer team.</p>
+      <p>Made with &lt;3 of science and tech.</p>
     </footer>
 
     <snack-bar active?="${_snackbarOpened}">
@@ -236,11 +223,15 @@ class MarsfarmApp extends connect(store)(LitElement) {
 
   _firstRendered() {
     installRouter(location =>
-      store.dispatch(navigate(window.decodeURIComponent(location.pathname)))
+      store.dispatch(
+        appOperations.navigate(window.decodeURIComponent(location.pathname))
+      )
     );
-    installOfflineWatcher(offline => store.dispatch(updateOffline(offline)));
+    installOfflineWatcher(offline =>
+      store.dispatch(appOperations.updateOffline(offline))
+    );
     installMediaQueryWatcher(`(min-width: 460px)`, matches =>
-      store.dispatch(updateLayout(matches))
+      store.dispatch(appOperations.updateLayout(matches))
     );
   }
 
