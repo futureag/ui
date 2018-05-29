@@ -1,9 +1,7 @@
-export const TEMPERATURES_REQUESTED = "TEMPERATURES_REQUESTED";
-export const TEMPERATURES_REQUEST_SUCCEEDED = "TEMPERATURES_REQUEST_SUCCEEDED";
-export const TEMPERATURES_REQUEST_FAILED = "TEMPERATURES_REQUEST_FAILED";
+import * as actions from "./actions.js";
 
-export const fetchTemperatures = () => dispatch => {
-  dispatch(temperaturesRequested);
+const fetchTemperatures = () => dispatch => {
+  dispatch(actions.temperaturesRequested());
   fetch("http://OpenagBloom.ddns.net:5985/mvp_test/_find", {
     method: "POST",
     credentials: "include",
@@ -42,29 +40,11 @@ export const fetchTemperatures = () => dispatch => {
   })
     .then(res => res.json())
     .then(json => {
-      dispatch(temperaturesRequestSucceeded(json.docs, json.bookmark));
+      dispatch(actions.temperaturesRequestSucceeded(json.docs, json.bookmark));
     })
     .catch(error => {
-      dispatch(temperaturesRequestFailed());
+      dispatch(actions.temperaturesRequestFailed());
     });
 };
 
-export const temperaturesRequested = () => {
-  return {
-    type: TEMPERATURES_REQUESTED
-  };
-};
-
-export const temperaturesRequestSucceeded = (items, bookmark) => {
-  return {
-    type: TEMPERATURES_REQUEST_SUCCEEDED,
-    items: items,
-    bookmark: bookmark
-  };
-};
-
-export const temperaturesRequestFailed = () => {
-  return {
-    type: TEMPERATURES_REQUEST_FAILED
-  };
-};
+export { fetchTemperatures };

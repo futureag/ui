@@ -5,17 +5,17 @@ import { PageViewElement } from "./page-view-element.js";
 import { connect } from "pwa-helpers/connect-mixin.js";
 
 import { store } from "../store.js";
-import { fetchTemperatures } from "../actions/temperatures.js";
-import { fetchCouchdbAuthentication } from "../redux/couchdb/operations.js";
+import { temperaturesOperations } from "../redux/temperatures";
+import { couchdbOperations } from "../redux/couchdb";
 
 import couchdb from "../redux/couchdb";
-import temperatures from "../reducers/temperatures.js";
+import temperatures from "../redux/temperatures";
 store.addReducers({
   couchdb,
   temperatures
 });
 
-store.dispatch(fetchCouchdbAuthentication());
+store.dispatch(couchdbOperations.fetchCouchdbAuthentication());
 
 class MarsfarmView1 extends connect(store)(PageViewElement) {
   _render(props) {
@@ -75,7 +75,7 @@ class MarsfarmView1 extends connect(store)(PageViewElement) {
       this._couchdbAuthentication === "succeeded" &&
       state.temperatures.temperaturesRequest === "notAsked"
     ) {
-      store.dispatch(fetchTemperatures());
+      store.dispatch(temperaturesOperations.fetchTemperatures());
     }
   }
 }

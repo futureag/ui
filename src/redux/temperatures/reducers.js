@@ -1,24 +1,27 @@
-import {
-  TEMPERATURES_REQUESTED,
-  TEMPERATURES_REQUEST_SUCCEEDED,
-  TEMPERATURES_REQUEST_FAILED
-} from "../actions/temperatures.js";
+import * as types from "./types.js";
 
-const temperatures = (
+/* State Shape
+{
+  items: Array,
+  temperaturesRequest: String
+}
+*/
+
+const reducer = (
   state = { items: [], temperaturesRequest: "notAsked" },
   action
 ) => {
   switch (action.type) {
-    case TEMPERATURES_REQUESTED:
+    case types.TEMPERATURES_REQUESTED:
       return {
         temperaturesRequest: "requested"
       };
-    case TEMPERATURES_REQUEST_SUCCEEDED:
+    case types.TEMPERATURES_REQUEST_SUCCEEDED:
       return {
         temperaturesRequest: "succeeded",
         items: action.items
       };
-    case TEMPERATURES_REQUEST_FAILED:
+    case types.TEMPERATURES_REQUEST_FAILED:
       return {
         ...state,
         temperaturesRequest: "failed"
@@ -28,4 +31,4 @@ const temperatures = (
   }
 };
 
-export default temperatures;
+export default reducer;
