@@ -19,9 +19,6 @@ const loadPage = page => async dispatch => {
       // Put code here that you want it to run every time when
       // navigate to view1 page and my-view1.js is loaded
       break;
-    case "view2":
-      await import("../../components/marsfarm-view2.js");
-      break;
     default:
       page = "view404";
       await import("../../components/marsfarm-view404.js");

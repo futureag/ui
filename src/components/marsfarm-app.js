@@ -171,7 +171,6 @@ class MarsfarmApp extends connect(store)(LitElement) {
       <!-- This gets hidden on a small screen-->
       <nav class="toolbar-list">
         <a selected?="${_page === "view1"}" href="/view1">Temperature</a>
-        <a selected?="${_page === "view2"}" href="/view2">Counter</a>
       </nav>
     </app-header>
 
@@ -181,7 +180,6 @@ class MarsfarmApp extends connect(store)(LitElement) {
           store.dispatch(appOperations.updateDrawerState(e.target.opened))}">
       <nav class="drawer-list">
         <a selected?="${_page === "view1"}" href="/view1">Temperature</a>
-        <a selected?="${_page === "view2"}" href="/view2">Counter</a>
       </nav>
     </app-drawer>
 
@@ -191,14 +189,6 @@ class MarsfarmApp extends connect(store)(LitElement) {
         class="page"
         active?="${_page === "view1"}"
       ></marsfarm-view1>
-      <marsfarm-view2
-        class="page"
-        active?="${_page === "view2"}"
-      ></marsfarm-view2>
-      <my-view3
-        class="page"
-        active?="${_page === "view3"}"
-      ></my-view3>
       <marsfarm-view404
         class="page"
         active?="${_page === "view404"}"
@@ -206,7 +196,7 @@ class MarsfarmApp extends connect(store)(LitElement) {
     </main>
 
     <footer>
-      <p>Made with &lt;3 by the Polymer team.</p>
+      <p>Made with &lt;3 of science and tech.</p>
     </footer>
 
     <snack-bar active?="${_snackbarOpened}">
