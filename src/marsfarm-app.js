@@ -6,8 +6,8 @@ import "@polymer/app-layout/app-scroll-effects/effects/waterfall.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
 
-import { menuIcon } from "./marsfarm-icons.js";
-import "./snack-bar.js";
+import { menuIcon } from "./elements/marsfarm-icons.js";
+import "./elements/snack-bar.js";
 
 import { connect } from "pwa-helpers/connect-mixin.js";
 import { installRouter } from "pwa-helpers/router.js";
@@ -15,8 +15,8 @@ import { installOfflineWatcher } from "pwa-helpers/network.js";
 import { installMediaQueryWatcher } from "pwa-helpers/media-query.js";
 import { updateMetadata } from "pwa-helpers/metadata.js";
 
-import { store } from "../store.js";
-import { appOperations } from "../redux/app";
+import { store } from "./store.js";
+import { appOperations } from "./redux/app";
 
 class MarsfarmApp extends connect(store)(LitElement) {
   _render({ appTitle, _page, _drawerOpened, _snackbarOpened, _offline }) {

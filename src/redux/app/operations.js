@@ -15,13 +15,13 @@ const navigate = path => dispatch => {
 const loadPage = page => async dispatch => {
   switch (page) {
     case "view1":
-      await import("../../components/marsfarm-view1.js");
+      await import("../../pages/marsfarm-view1.js");
       // Put code here that you want it to run every time when
       // navigate to view1 page and my-view1.js is loaded
       break;
     default:
       page = "view404";
-      await import("../../components/marsfarm-view404.js");
+      await import("../../pages/marsfarm-view404.js");
   }
 
   dispatch(updatePage(page));

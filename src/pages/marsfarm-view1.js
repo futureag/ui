@@ -1,7 +1,7 @@
 import { html } from "@polymer/lit-element";
-import { SharedStyles } from "./shared-styles.js";
-import { PlotlyStyles } from "./plotly-styles.js";
-import { PageViewElement } from "./page-view-element.js";
+import { SharedStyles } from "../theme/shared-styles.js";
+import { PlotlyStyles } from "../theme/plotly-styles.js";
+import { PageViewElement } from "../elements/page-view-element.js";
 import { connect } from "pwa-helpers/connect-mixin.js";
 
 import { store } from "../store.js";
