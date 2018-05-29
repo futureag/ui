@@ -14,10 +14,12 @@ const reducer = (
   switch (action.type) {
     case types.TEMPERATURES_REQUESTED:
       return {
+        ...state,
         temperaturesRequest: "requested"
       };
     case types.TEMPERATURES_REQUEST_SUCCEEDED:
       return {
+        ...state,
         temperaturesRequest: "succeeded",
         items: action.payload.items
       };
