@@ -1,6 +1,6 @@
 import { html } from "@polymer/lit-element";
-import { PageViewElement } from "./page-view-element.js";
-import { SharedStyles } from "./shared-styles.js";
+import { PageViewElement } from "../elements/page-view-element.js";
+import { SharedStyles } from "../theme/shared-styles.js";
 
 class MarsfarmView404 extends PageViewElement {
   _render(props) {
