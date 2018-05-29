@@ -9,8 +9,9 @@ const temperaturesRequested = () => {
 const temperaturesRequestSucceeded = (items, bookmark) => {
   return {
     type: types.TEMPERATURES_REQUEST_SUCCEEDED,
-    items: items,
-    bookmark: bookmark
+    payload: {
+      items: items
+    }
   };
 };
 

@@ -19,7 +19,7 @@ const reducer = (
     case types.TEMPERATURES_REQUEST_SUCCEEDED:
       return {
         temperaturesRequest: "succeeded",
-        items: action.items
+        items: action.payload.items
       };
     case types.TEMPERATURES_REQUEST_FAILED:
       return {
