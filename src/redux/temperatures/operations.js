@@ -16,7 +16,7 @@ const fetchTemperatures = () => {
 };
 
 const temperatures = () => {
-  return fetch("http://OpenagBloom.ddns.net:5985/mvp_test/_find", {
+  return fetch("https://OpenagBloom.ddns.net:6984/mvp_test/_find", {
     method: "POST",
     credentials: "include",
     headers: {

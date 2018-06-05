@@ -14,7 +14,7 @@ const fetchCouchdbAuthentication = () => {
 };
 
 const couchdbAuth = () => {
-  return fetch(`http://OpenagBloom.ddns.net:5985/_session`, {
+  return fetch(`https://OpenagBloom.ddns.net:6984/_session`, {
     headers: new Headers({
       "Content-Type": "application/json"
     }),
