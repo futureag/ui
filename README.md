@@ -10,7 +10,7 @@
 * Presentation Layer (Web Components)
 * Logic Layer (Redux)
 
-![Video Here](https://public.3.basecamp.com/p/t7o7Wcbn8sqoX1T5o2PnfpQy)
+[Video Here](https://public.3.basecamp.com/p/t7o7Wcbn8sqoX1T5o2PnfpQy)
 
 ### On Deck:
 
